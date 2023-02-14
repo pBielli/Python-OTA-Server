@@ -118,4 +118,39 @@ void setup() {
       file.print(code);
       file.close();
       client.println("POST /upload HTTP/1.1");
-      client.println("Host: " + String
+      client.println("Host: " + String(server));
+client.println("Content-Type: application/x-www-form-urlencoded");
+client.print("code=");
+client.print(code);
+client.println();
+Serial.println("Code uploaded to server");
+}
+} else {
+Serial.println("Connection to server failed");
+}
+}
+
+void loop() {
+
+}
+
+### Dipendenze
+
+Il client richiede l'installazione delle seguenti librerie:
+
+- ESP8266WiFi
+- WiFiClient
+- SPIFFS
+
+### Utilizzo
+
+Il client ESP8266 deve essere programmato utilizzando l'IDE di Arduino. Per utilizzare il client, modificare le seguenti righe con le proprie credenziali WiFi e indirizzo IP del server OTA:
+
+```c
+const char* ssid = "NOME RETE WIFI";
+const char* password = "PASSWORD RETE WIFI";
+const char* server = "INDIRIZZO IP DEL SERVER OTA";
+const int port = 8000;
+
+
+Caricare il codice sul dispositivo ESP8266 utilizzando l'IDE di Arduino.
